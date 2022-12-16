@@ -1,0 +1,5 @@
+# OS and IDE
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store
