@@ -39,12 +39,6 @@ Interested? [Here's how to get started.](#getting-started)
 
 ## FAQ
 
-### Why would you build your own image instead of making the changes on the client?
-
-This project aims to build on the changes proposed [here](https://fedoraproject.org/wiki/Changes/OstreeNativeContainer)
-and [here](https://fedoraproject.org/wiki/Changes/OstreeNativeContainer) and is inspired
-by [this](https://www.ypsidanger.com/building-your-own-fedora-silverblue-image/) article.
-
 ### What are some possible security concerns with this project?
 
 Currently, there are two major security concerns surrounding this project:
