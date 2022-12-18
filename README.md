@@ -11,8 +11,8 @@
         <img alt="Issues" src="https://img.shields.io/github/issues/ahgencer/silverblue/open?label=Issues">
     </a>
     <br>
-    <a href="https://github.com/ahgencer/silverblue/actions/workflows/publish.yaml">
-        <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/ahgencer/silverblue/publish.yaml?branch=main&label=Build">
+    <a href="https://github.com/ahgencer/silverblue/actions/workflows/publish.yml">
+        <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/ahgencer/silverblue/publish.yml?branch=main&label=Build">
     </a>
     <a href="https://github.com/ahgencer/silverblue#license">
         <img alt="License" src="https://img.shields.io/github/license/ahgencer/silverblue?label=License">
@@ -38,6 +38,12 @@ experience, plus:
 Interested? [Here's how to get started.](#getting-started)
 
 ## FAQ
+
+### Why would you build your own image instead of making the changes on the client?
+
+This project aims to build on the changes proposed [here](https://fedoraproject.org/wiki/Changes/OstreeNativeContainer)
+and [here](https://fedoraproject.org/wiki/Changes/OstreeNativeContainer) and is inspired
+by [this](https://www.ypsidanger.com/building-your-own-fedora-silverblue-image/) article.
 
 ### What are some possible security concerns with this project?
 
