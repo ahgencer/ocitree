@@ -1,0 +1,43 @@
+name: Publish image
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"  # Every day at 00:00
+
+env:
+  FEDORA_VERSION: 37
+
+jobs:
+  publish:
+    name: Build and push image to GitHub container registry
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Setup environment
+        run: echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
+
+      - name: Build image
+        id: build
+        uses: redhat-actions/buildah-build@v2
+        with:
+          context: src/
+          containerfiles: src/Containerfile
+          build-args: |
+            FEDORA_VERSION=${{ env.FEDORA_VERSION }}
+          image: silverblue
+          tags: latest ${{ env.FEDORA_VERSION }} ${{ env.FEDORA_VERSION }}.${{ env.DATE }} ${{ github.sha }}
+          oci: true
+
+      - name: Push to GitHub container registry
+        id: push
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ steps.build.outputs.image }}
+          tags: ${{ steps.build.outputs.tags }}
+          registry: ghcr.io/${{ github.repository_owner }}
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
