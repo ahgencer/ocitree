@@ -41,7 +41,7 @@ Interested? [Here's how to get started.](#getting-started)
 
 ### What are some possible security concerns with this project?
 
-Currently, there are two major security concerns surrounding this project:
+Currently, there are a few major security concerns surrounding this project:
 
 1. The images are not built on Fedora's trusted cloud infrastructure, rather
    using [GitHub Actions](https://docs.github.com/en/actions). This puts the burden of trust on an opaque platform, as
@@ -51,9 +51,13 @@ Currently, there are two major security concerns surrounding this project:
 2. The images are not signed in any way after they are built, meaning we have no way of protecting the image from being
    tampered with as it's being delivered to the end-user.
 
-Unfortunately, these concerns cannot be taken lightly; which is why the images built by the current pipeline should not
-be used on production systems (or even on systems that are networked with critical systems). However, these concerns do
-not apply for locally built and hosted images, so it should be safe to use this project that way.
+3. The images are not built [reproducibly](https://reproducible-builds.org/). Currently, the Containerfile pulls in
+   additional resources over the network, which are subject to [link rot](https://en.wikipedia.org/wiki/Link_rot) as
+   well as to being quietly replaced with malicious versions (such as by a third-party attacker or a rogue developer).
+
+Unfortunately, these concerns **cannot be taken lightly**; which is why the images built by the current pipeline
+**should not be used on production systems** (or even on systems that are networked with critical systems). When testing
+out the images (especially ones that are not built by yourself, locally), please be aware of the risks involved.
 
 ## Getting started
 
@@ -75,9 +79,9 @@ Here's a list of everything you will find inside *ahgencer/silverblue*:
 Found a bug or a missing feature? You can report it over at
 the [issue tracker](https://github.com/ahgencer/silverblue/issues).
 
-Please keep in mind that *ahgencer/silverblue* is only meant for experimenting with OSTree and other immutable desktop
-OS technologies, and is not intended for production use. It makes no guaranties about the stability or the security of
-the final system images.
+Please keep in mind that *ahgencer/silverblue* is **only meant for experimenting** with OSTree and other immutable
+desktop OS technologies, and is not intended for production use. It makes no guaranties about the stability or the
+security of the final system images.
 
 ## License
 
