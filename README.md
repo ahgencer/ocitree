@@ -2,7 +2,7 @@
 
 <p align="center">
     <a href="https://ghcr.io/ahgencer/silverblue">
-        <img alt="Container Registry" src="https://img.shields.io/badge/Container%20Registry-ahgencer%2Fsilverblue-8250df">
+        <img alt="Container Registry" src="https://img.shields.io/badge/Container%20Registry-ghcr.io%2Fahgencer%2Fsilverblue-8250df">
     </a>
     <a href="https://github.com/ahgencer/silverblue">
         <img alt="GitHub Stars" src="https://img.shields.io/github/stars/ahgencer/silverblue?label=GitHub%20Stars">
