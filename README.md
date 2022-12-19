@@ -66,9 +66,9 @@ found [here](docs/INSTALL.md).
 
 Here's a list of everything you will find inside *ahgencer/silverblue*:
 
-|      Component       | Description                                                                        |
-|:--------------------:|:-----------------------------------------------------------------------------------|
-| Fedora Silverblue 37 | The base image. *ahgencer/silverblue* builds on the vanilla Silverblue experience. |
+|      Component       |                                   Source                                   | Description                                                                        |
+|:--------------------:|:--------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------|
+| Fedora Silverblue 37 | [cgwalters/fedora-silverblue](https://ghcr.io/cgwalters/fedora-silverblue) | The base image. *ahgencer/silverblue* builds on the vanilla Silverblue experience. |
 
 ## Contributing
 
