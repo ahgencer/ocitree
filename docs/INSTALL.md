@@ -22,7 +22,7 @@ Now, you should be able to reboot into the new image. You can check the status w
 *ahgencer/silverblue* is built the same way as any other Podman image. To build it from source, first install `podman`
 (which is pre-installed on Fedora Silverblue), then build the image normally:
 
-    # podman build -t silverblue [--squash] src/
+    # podman build -t silverblue src/
 
 You can check the built image with:
 

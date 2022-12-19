@@ -28,8 +28,6 @@ jobs:
           containerfiles: src/Containerfile
           build-args: |
             FEDORA_VERSION=${{ env.FEDORA_VERSION }}
-          extra-args: |
-            --squash
           image: silverblue
           tags: latest ${{ env.FEDORA_VERSION }} ${{ env.FEDORA_VERSION }}.${{ env.DATE }} ${{ github.sha }}
           oci: true
