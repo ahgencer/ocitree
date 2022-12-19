@@ -8,7 +8,7 @@ mainline [Fedora Silverblue](https://silverblue.fedoraproject.org/download) from
 
 Afterwards, you can rebase onto *ahgencer/silverblue* with:
 
-    $ rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/ahgencer/silverblue:latest
+    $ rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/ahgencer/silverblue:37
 
 Now, you should be able to reboot into the new image. You can check the status with:
 
