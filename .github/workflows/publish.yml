@@ -3,7 +3,7 @@ name: Publish image
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"  # Every day at 00:00
+    - cron: "0 21 * * *"  # Every day at 21:00 (upstream builds at 19:20)
 
 env:
   FEDORA_VERSION: 37
