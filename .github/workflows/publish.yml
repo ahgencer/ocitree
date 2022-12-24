@@ -40,7 +40,7 @@ jobs:
           build-args: |
             FEDORA_VERSION=${{ matrix.version }}
           image: silverblue
-          tags: latest ${{ matrix.version }} ${{ matrix.version }}.${{ env.DATE }} ${{ github.sha }}
+          tags: ${{ matrix.version }} ${{ matrix.version }}.${{ env.DATE }} ${{ matrix.version }}.${{ github.sha }}
           oci: true
 
       - name: Push to GitHub container registry
