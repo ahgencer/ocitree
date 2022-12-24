@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: "0 21 * * *"  # Every day at 21:00 (upstream builds at 19:20)
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   check:
     name: Pre-flight checks
