@@ -23,6 +23,9 @@ jobs:
       fail-fast: false
       matrix:
         version: [ 36, 37 ]
+        include:
+          - version: 37
+            latest: true
 
     steps:
       - name: Checkout sources
@@ -32,6 +35,18 @@ jobs:
         run: |
           echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
           echo "SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+      - name: Generate tags
+        id: tag
+        shell: bash
+        run: |
+          tags=()
+
+          if [[ "${{ matrix.latest }}" == "true" ]]; then
+            tags+=("latest")
+          fi
+
+          echo "tags=${tags[*]}" >> $GITHUB_OUTPUT
 
       - name: Build image
         id: build
@@ -46,6 +61,7 @@ jobs:
             ${{ matrix.version }}
             ${{ matrix.version }}.${{ env.DATE }}
             ${{ matrix.version }}.${{ env.SHA }}
+            ${{ steps.tag.outputs.tags }}
           oci: true
 
       - name: Push to GitHub container registry
