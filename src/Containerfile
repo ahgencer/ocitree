@@ -12,14 +12,6 @@
 
 ARG FEDORA_VERSION=37
 
-## Stage 1: Compile locally installed packages and binaries
-FROM registry.fedoraproject.org/fedora:$FEDORA_VERSION AS builder
-
-# Install build dependencies
-RUN dnf install -y \
-      gcc
-
-## Stage 2: Build custom OSTree image
 # See https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable for final location of base image
 FROM ghcr.io/cgwalters/fedora-silverblue:$FEDORA_VERSION
 
