@@ -1,40 +1,46 @@
 # Installation
 
+> **Warning**: *ahgencer/silverblue* is an experimental image and should not be used on production systems.
+
 *ahgencer/silverblue* is available on the [GitHub](https://ghcr.io/) container
 registry [here](https://ghcr.io/ahgencer/silverblue).
 
-To install *ahgencer/silverblue*, first download and install
-mainline [Fedora Silverblue](https://silverblue.fedoraproject.org/download) from the bootable ISO.
+1. Download and install [Fedora Silverblue](https://silverblue.fedoraproject.org/download) from the bootable ISO. You
+   may also need to upgrade to the latest version first:
 
-Afterwards, you can rebase onto *ahgencer/silverblue* with:
+        $ rpm-ostree upgrade && systemctl reboot
 
-    $ rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/ahgencer/silverblue:37
+2. Afterwards, you can rebase onto *ahgencer/silverblue* with:
 
-Now, you should be able to reboot into the new image. You can check the status with:
+       $ rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/ahgencer/silverblue:37
 
-    # rpm-ostree status
+3. Now, you should be able to reboot into the new image. You can check the status with:
 
-> **Warning:** It is not recommended to rebase onto *ahgencer/silverblue* from an existing system. Please perform a
-> clean installation first.
+       # rpm-ostree status
+
+If you wish to undo your changes, you can revert back to the original image with:
+
+    $ rpm-ostree rebase fedora:fedora/37/x86_64/silverblue
 
 ## Building from source
 
-*ahgencer/silverblue* is built the same way as any other Podman image. To build it from source, first install `podman`
-(which is pre-installed on Fedora Silverblue), then build the image normally:
+To build *ahgencer/silverblue* from source, first install `podman` (which is pre-installed on Fedora Silverblue).
 
-    # podman build -t silverblue src/
+1. Build the image normally, like any other Podman image:
 
-You can check the built image with:
+       # podman build -t silverblue src/
 
-    # podman images
+2. You can check the built image with:
 
-Next, push the image onto any container registry (such as [Docker Hub](https://hub.docker.com/)
-or [Quay.io](https://quay.io/)):
+       # podman images
 
-    # podman push silverblue <REGISTRY>
+3. Next, push the image onto any container registry (such as [Docker Hub](https://hub.docker.com/)
+   or [Quay.io](https://quay.io/)):
 
-Where `REGISTRY` is the URL to your container registry.
+       # podman push silverblue <REGISTRY>
 
-Afterwards, you can rebase onto your newly-built image with:
+   Where `REGISTRY` is the URL to your container registry.
 
-    $ rpm-ostree rebase --experimental ostree-unverified-registry:<REGISTRY>
+4. Afterwards, you can rebase onto your newly-built image with:
+
+       $ rpm-ostree rebase --experimental ostree-unverified-registry:<REGISTRY>
