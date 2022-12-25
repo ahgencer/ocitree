@@ -12,7 +12,7 @@ registry [here](https://ghcr.io/ahgencer/silverblue).
 
 2. Afterwards, you can rebase onto *ahgencer/silverblue* with:
 
-       $ rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/ahgencer/silverblue:37
+       $ rpm-ostree rebase ostree-unverified-registry:ghcr.io/ahgencer/silverblue:37
 
 3. Now, you should be able to reboot into the new image. You can check the status with:
 
@@ -43,4 +43,4 @@ To build *ahgencer/silverblue* from source, first install `podman` (which is pre
 
 4. Afterwards, you can rebase onto your newly-built image with:
 
-       $ rpm-ostree rebase --experimental ostree-unverified-registry:<REGISTRY>
+       $ rpm-ostree rebase ostree-unverified-registry:<REGISTRY>
