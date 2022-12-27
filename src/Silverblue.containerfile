@@ -12,7 +12,7 @@
 
 ARG FEDORA_VERSION=37
 
-# See https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable for final location of base image
+# See https://pagure.io/releng/pull-request/11180 for final location of base image
 FROM ghcr.io/cgwalters/fedora-silverblue:$FEDORA_VERSION
 
 # Finish and commit image
