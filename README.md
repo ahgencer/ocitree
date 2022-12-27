@@ -1,8 +1,8 @@
 <h1 align="center">Custom Silverblue / Kinoite Images</h1>
 
 <p align="center">
-    <a href="https://ghcr.io/ahgencer/silverblue">
-        <img alt="Container Registry" src="https://img.shields.io/badge/Container%20Registry-ghcr.io%2Fahgencer%2Fsilverblue-8250df">
+    <a href="https://github.com/ahgencer?tab=packages&repo_name=ostree">
+        <img alt="Container Registry" src="https://img.shields.io/badge/Container%20Registry-2%20packages-8250df">
     </a>
     <a href="https://github.com/ahgencer/ostree">
         <img alt="GitHub Stars" src="https://img.shields.io/github/stars/ahgencer/ostree?label=GitHub%20Stars">
@@ -69,7 +69,7 @@ found [here](docs/INSTALL.md).
 
 ### What's inside the images?
 
-### Silverblue
+#### Silverblue
 
 Here's a list of everything you will find inside *ahgencer/silverblue*:
 
@@ -77,7 +77,7 @@ Here's a list of everything you will find inside *ahgencer/silverblue*:
 |:-----------------:|:--------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------|
 | Fedora Silverblue | [cgwalters/fedora-silverblue](https://ghcr.io/cgwalters/fedora-silverblue) | The base image. *ahgencer/silverblue* builds on the vanilla Silverblue experience. |
 
-### Kinoite
+#### Kinoite
 
 Here's a list of everything you will find inside *ahgencer/kinoite*:
 
