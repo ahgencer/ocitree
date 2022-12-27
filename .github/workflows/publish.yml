@@ -1,9 +1,13 @@
-name: Build and publish image
+name: Build and publish images
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 21 * * *"  # Every day at 21:00 (upstream builds at 19:20)
+    - cron: "0 22 * * *"  # Every day at 22:00 (upstream builds at 19:20)
+
+defaults:
+  run:
+    shell: bash
 
 permissions:
   contents: read
@@ -27,6 +31,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        variant: [ silverblue, kinoite ]
         version: [ 36, 37 ]
         include:
           - version: 37
@@ -41,9 +46,12 @@ jobs:
           echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
           echo "SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
+          # Capitalize first letter of variant to match Containerfile naming
+          containerfile="${{ matrix.variant }}.containerfile"
+          echo "CONTAINERFILE=${containerfile^}" >> $GITHUB_ENV
+
       - name: Generate tags
         id: tag
-        shell: bash
         run: |
           tags=()
 
@@ -58,10 +66,10 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           context: src/
-          containerfiles: src/Containerfile
+          containerfiles: src/${{ env.CONTAINERFILE }}
           build-args: |
             FEDORA_VERSION=${{ matrix.version }}
-          image: silverblue
+          image: ${{ matrix.variant }}
           tags: |
             ${{ matrix.version }}
             ${{ matrix.version }}.${{ env.DATE }}
