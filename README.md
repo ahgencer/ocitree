@@ -1,30 +1,30 @@
 <h1 align="center">Custom Silverblue / Kinoite Images</h1>
 
 <p align="center">
-    <a href="https://github.com/ahgencer?tab=packages&repo_name=ostree">
+    <a href="https://github.com/ahgencer?tab=packages&repo_name=ocitree">
         <img alt="Container Registry" src="https://img.shields.io/badge/Container%20Registry-2%20packages-8250df">
     </a>
-    <a href="https://github.com/ahgencer/ostree">
-        <img alt="GitHub Stars" src="https://img.shields.io/github/stars/ahgencer/ostree?label=GitHub%20Stars">
+    <a href="https://github.com/ahgencer/ocitree">
+        <img alt="GitHub Stars" src="https://img.shields.io/github/stars/ahgencer/ocitree?label=GitHub%20Stars">
     </a>
-    <a href="https://github.com/ahgencer/ostree/issues">
-        <img alt="Issues" src="https://img.shields.io/github/issues/ahgencer/ostree/open?label=Issues">
+    <a href="https://github.com/ahgencer/ocitree/issues">
+        <img alt="Issues" src="https://img.shields.io/github/issues/ahgencer/ocitree/open?label=Issues">
     </a>
     <br>
-    <a href="https://github.com/ahgencer/ostree/actions/workflows/publish.yml">
-        <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/ahgencer/ostree/publish.yml?branch=main&label=Build">
+    <a href="https://github.com/ahgencer/ocitree/actions/workflows/publish.yml">
+        <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/ahgencer/ocitree/publish.yml?branch=main&label=Build">
     </a>
-    <a href="https://github.com/ahgencer/ostree#license">
-        <img alt="License" src="https://img.shields.io/github/license/ahgencer/ostree?label=License">
+    <a href="https://github.com/ahgencer/ocitree#license">
+        <img alt="License" src="https://img.shields.io/github/license/ahgencer/ocitree?label=License">
     </a>
-    <a href="https://github.com/ahgencer/ostree#contributing">
+    <a href="https://github.com/ahgencer/ocitree#contributing">
         <img alt="Community Built" src="https://img.shields.io/badge/Made%20with-%E2%9D%A4-red">
     </a>
 </p>
 
-*ahgencer/ostree provides customized OSTree images based on Fedora Silverblue / Kinoite for personal use.*
+*ahgencer/ocitree provides customized container-native OSTree images based on Fedora Silverblue / Kinoite.*
 
-*ahgencer/ostree* is an experiment in building custom distributions derived
+*ahgencer/ocitree* is an experiment in building custom distributions derived
 from [Silverblue](https://silverblue.fedoraproject.org/) and [Kinoite](https://kinoite.fedoraproject.org/) as
 simple [Podman](https://podman.io/) images. The images are automatically rebuilt nightly and pushed onto a container
 registry, which can then be used as an upstream remote for [OSTree](https://ostreedev.github.io/ostree/introduction/).
@@ -88,9 +88,9 @@ Here's a list of everything you will find inside *ahgencer/kinoite*:
 ## Contributing
 
 Found a bug or a missing feature? You can report it over at
-the [issue tracker](https://github.com/ahgencer/ostree/issues).
+the [issue tracker](https://github.com/ahgencer/ocitree/issues).
 
-Please keep in mind that *ahgencer/ostree* is **only meant for experimenting** with OSTree and other immutable desktop
+Please keep in mind that *ahgencer/ocitree* is **only meant for experimenting** with OSTree and other immutable desktop
 OS technologies, and is not intended for production use. It makes no guaranties about the stability or the security of
 the final system images.
 

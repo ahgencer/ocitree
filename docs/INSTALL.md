@@ -1,6 +1,6 @@
 # Installation
 
-> **Warning**: The images published by *ahgencer/ostree* are **experimental** and should not be used on production
+> **Warning**: The images published by *ahgencer/ocitree* are **experimental** and should not be used on production
 > systems.
 
 > **Note**: These instructions are for installing *ahgencer/silverblue*. To install *ahgencer/kinoite* instead, simply
