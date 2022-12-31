@@ -51,7 +51,7 @@ jobs:
         run: |
           echo "Upstream build is failing, bailing out ..." 1>&2
           exit 1
-        if: steps.check.outputs.out-of-date == 'true'
+        if: steps.check.outputs.out-of-date == 'false'
 
       - name: Generate tags
         id: tag
