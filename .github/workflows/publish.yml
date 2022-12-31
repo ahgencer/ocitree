@@ -3,7 +3,7 @@ name: Build and publish images
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 22 * * *"  # Every day at 22:00 (upstream builds at 19:20)
+    - cron: "0 21 * * *"  # Every day at 21:00 (upstream builds at 19:20)
 
 defaults:
   run:
@@ -51,7 +51,7 @@ jobs:
         run: |
           echo "Upstream build is failing, bailing out ..." 1>&2
           exit 1
-        if: steps.check.outputs.out-of-date == "true"
+        if: steps.check.outputs.out-of-date == 'true'
 
       - name: Generate tags
         id: tag
