@@ -14,9 +14,19 @@ permissions:
   packages: write
 
 jobs:
+  check:
+    name: Pre-flight checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ensure upstream build is passing (if this build is scheduled)
+        run: curl -s https://github.com/cgwalters/sync-fedora-ostree-containers/actions/workflows/build.yml/badge.svg | grep -q passing
+        if: ${{ github.event_name == 'schedule' }}
+
   publish:
     name: Build and push image to GitHub container registry
     runs-on: ubuntu-latest
+    needs: check
     timeout-minutes: 40
     strategy:
       fail-fast: false
@@ -39,19 +49,6 @@ jobs:
           # Capitalize first letter of variant to match Containerfile naming
           containerfile="${{ matrix.variant }}.containerfile"
           echo "CONTAINERFILE=${containerfile^}" >> $GITHUB_ENV
-
-      - name: Check if parent image has updated
-        id: check
-        uses: twiddler/is-my-docker-parent-image-out-of-date@v1
-        with:
-          parent-image: ghcr.io/cgwalters/fedora-${{ matrix.variant }}:${{ matrix.version }}
-          my-image: ghcr.io/${{ github.repository_owner }}/${{ matrix.variant }}:${{ matrix.version }}
-
-      - name: Ensure upstream build is passing
-        run: |
-          echo "Upstream build is failing, bailing out ..." 1>&2
-          exit 1
-        if: steps.check.outputs.out-of-date == 'false'
 
       - name: Generate tags
         id: tag
