@@ -1,9 +1,9 @@
 name: Build and publish images
 
 on:
-  workflow_dispatch:
   schedule:
     - cron: "0 21 * * *"  # Every day at 21:00 (upstream builds at 19:20)
+  workflow_dispatch:
 
 defaults:
   run:
@@ -19,12 +19,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Ensure upstream build is passing (if this build is scheduled)
+      - name: Ensure upstream build is passing
         run: curl -s https://github.com/cgwalters/sync-fedora-ostree-containers/actions/workflows/build.yml/badge.svg | grep -q passing
         if: ${{ github.event_name == 'schedule' }}
 
   publish:
-    name: Build and push image to GitHub container registry
+    name: Build and push image to container registry
     runs-on: ubuntu-latest
     needs: check
     timeout-minutes: 40
@@ -55,6 +55,10 @@ jobs:
         run: |
           tags=()
 
+          tags+=("${{ matrix.version }}")
+          tags+=("${{ matrix.version }}.${{ env.DATE }}")
+          tags+=("${{ matrix.version }}.${{ env.SHA }}")
+
           if [[ "${{ matrix.latest }}" == "true" ]]; then
             tags+=("latest")
           fi
@@ -70,14 +74,10 @@ jobs:
           build-args: |
             FEDORA_VERSION=${{ matrix.version }}
           image: ${{ matrix.variant }}
-          tags: |
-            ${{ matrix.version }}
-            ${{ matrix.version }}.${{ env.DATE }}
-            ${{ matrix.version }}.${{ env.SHA }}
-            ${{ steps.tag.outputs.tags }}
+          tags: ${{ steps.tag.outputs.tags }}
           oci: true
 
-      - name: Push to GitHub container registry
+      - name: Push to container registry
         id: push
         uses: redhat-actions/push-to-registry@v2
         with:
