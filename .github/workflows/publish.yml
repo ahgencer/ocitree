@@ -2,7 +2,7 @@ name: Build and publish images
 
 on:
   schedule:
-    - cron: "0 21 * * *"  # Every day at 21:00 (upstream builds at 19:20)
+    - cron: "0 22 * * *"  # Every day at 22:00 (upstream builds at 19:20)
   workflow_dispatch:
 
 defaults:
@@ -45,10 +45,7 @@ jobs:
         run: |
           echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
           echo "SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-
-          # Capitalize first letter of variant to match Containerfile naming
-          containerfile="${{ matrix.variant }}.containerfile"
-          echo "CONTAINERFILE=${containerfile^}" >> $GITHUB_ENV
+          echo "CONTAINERFILE=$(find src/ -type f -iname "${{ matrix.variant }}.containerfile")" >> $GITHUB_ENV
 
       - name: Generate tags
         id: tag
@@ -70,9 +67,8 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           context: src/
-          containerfiles: src/${{ env.CONTAINERFILE }}
-          build-args: |
-            FEDORA_VERSION=${{ matrix.version }}
+          containerfiles: ${{ env.CONTAINERFILE }}
+          build-args: FEDORA_VERSION=${{ matrix.version }}
           image: ${{ matrix.variant }}
           tags: ${{ steps.tag.outputs.tags }}
           oci: true
