@@ -54,7 +54,6 @@ jobs:
 
           tags+=("${{ matrix.version }}")
           tags+=("${{ matrix.version }}.${{ env.DATE }}")
-          tags+=("${{ matrix.version }}.${{ env.SHA }}")
 
           if [[ "${{ matrix.latest }}" == "true" ]]; then
             tags+=("latest")
