@@ -1,7 +1,7 @@
 <h1 align="center">Custom Silverblue / Kinoite Images</h1>
 
 <p align="center">
-    <a href="https://github.com/ahgencer?tab=packages&repo_name=ocitree">
+    <a href="https://github.com/ahgencer/ocitree/packages">
         <img alt="Container Registry" src="https://img.shields.io/badge/Container%20Registry-2%20packages-8250df">
     </a>
     <a href="https://github.com/ahgencer/ocitree">
