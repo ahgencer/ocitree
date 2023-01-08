@@ -73,6 +73,7 @@ found [here](docs/INSTALL.md).
   particular day.
 - `latest`: Points to the latest stable version of Fedora.
 - `rawhide`: The development branch of Fedora. These images might be unstable!
+- `testing`: The development branch of *ahgencer/ocitree*. Builds off of the latest version of Fedora.
 
 ### What's inside the images?
 
