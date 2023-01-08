@@ -17,7 +17,7 @@ at [ahgencer/silverblue](https://ghcr.io/ahgencer/silverblue) and [ahgencer/kino
 
 2. Afterwards, you can rebase onto *ahgencer/silverblue* with:
 
-       $ rpm-ostree rebase ostree-unverified-registry:ghcr.io/ahgencer/silverblue:37
+       $ rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/ahgencer/silverblue:37
 
    Alternatively, you can use one of the tags listed [here](../README.md#installation).
 
@@ -57,4 +57,4 @@ To build *ahgencer/silverblue* from source, first install `podman` (which is pre
 
 5. Afterwards, you can rebase onto your newly-built image with:
 
-       $ rpm-ostree rebase ostree-unverified-registry:<REGISTRY>
+       $ rpm-ostree rebase --experimental ostree-unverified-registry:<REGISTRY>
