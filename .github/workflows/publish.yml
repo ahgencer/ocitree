@@ -1,9 +1,14 @@
 name: Build and publish images
 
 on:
-  schedule:
-    - cron: "0 22 * * *"  # Every day at 22:00 (upstream builds at 19:20)
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      stable:
+        required: true
+        type: boolean
+      version:
+        required: true
+        type: string
 
 defaults:
   run:
@@ -14,28 +19,14 @@ permissions:
   packages: write
 
 jobs:
-  check:
-    name: Pre-flight checks
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Ensure upstream build is passing
-        run: curl -s https://github.com/cgwalters/sync-fedora-ostree-containers/actions/workflows/build.yml/badge.svg | grep -q passing
-        if: ${{ github.event_name == 'schedule' }}
-
   publish:
     name: Build and push image to container registry
     runs-on: ubuntu-latest
-    needs: check
     timeout-minutes: 40
     strategy:
       fail-fast: false
       matrix:
         variant: [ silverblue, kinoite ]
-        version: [ 36, 37, rawhide ]
-        include:
-          - version: 37
-            latest: true
 
     steps:
       - name: Checkout sources
@@ -52,14 +43,20 @@ jobs:
         run: |
           tags=()
 
-          tags+=("${{ matrix.version }}")
+          if [[ "${{ inputs.stable }}" == "true" ]]; then
 
-          if [[ "${{ matrix.version }}" != "rawhide" ]]; then
-            tags+=("${{ matrix.version }}.${{ env.DATE }}")
-          fi
+            tags+=("${{ matrix.version }}")
 
-          if [[ "${{ matrix.latest }}" == "true" ]]; then
-            tags+=("latest")
+            if [[ "${{ matrix.version }}" != "rawhide" ]]; then
+              tags+=("${{ matrix.version }}.${{ env.DATE }}")
+            fi
+
+            if [[ "${{ inputs.version }}" == "37" ]]; then
+              tags+=("latest")
+            fi
+
+          else
+            tags+=("testing")
           fi
 
           echo "tags=${tags[*]}" >> $GITHUB_OUTPUT
@@ -70,14 +67,14 @@ jobs:
         with:
           context: src/
           containerfiles: ${{ env.CONTAINERFILE }}
-          build-args: FEDORA_VERSION=${{ matrix.version }}
+          build-args: FEDORA_VERSION=${{ inputs.version }}
           image: ${{ matrix.variant }}
           tags: ${{ steps.tag.outputs.tags }}
           oci: true
 
       - name: Push to container registry
-        id: push
         uses: redhat-actions/push-to-registry@v2
+        id: push
         with:
           image: ${{ steps.build.outputs.image }}
           tags: ${{ steps.build.outputs.tags }}

@@ -11,7 +11,7 @@
         <img alt="Issues" src="https://img.shields.io/github/issues/ahgencer/ocitree/open?label=Issues">
     </a>
     <br>
-    <a href="https://github.com/ahgencer/ocitree/actions/workflows/publish.yml">
+    <a href="https://github.com/ahgencer/ocitree/actions">
         <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/ahgencer/ocitree/publish.yml?branch=main&label=Build">
     </a>
     <a href="https://github.com/ahgencer/ocitree#license">
