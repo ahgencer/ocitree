@@ -67,6 +67,13 @@ aware of the risks involved when testing out the images (especially ones that ar
 Installation instructions, as well as instructions for building the images from source, can be
 found [here](docs/INSTALL.md).
 
+*ahgencer/ocitree* publishes a few different tags that are available for installation:
+
+- `36`, `37`: The currently supported major versions of Fedora. Also see `<VERSION>.<DATE>` for the release of any
+  particular day.
+- `latest`: Points to the latest stable version of Fedora.
+- `rawhide`: The development branch of Fedora. These images might be unstable!
+
 ### What's inside the images?
 
 #### Silverblue

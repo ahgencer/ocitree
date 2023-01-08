@@ -19,6 +19,8 @@ at [ahgencer/silverblue](https://ghcr.io/ahgencer/silverblue) and [ahgencer/kino
 
        $ rpm-ostree rebase ostree-unverified-registry:ghcr.io/ahgencer/silverblue:37
 
+   Alternatively, you can use one of the tags listed [here](../README.md#installation).
+
 3. Now, you should be able to reboot into the new image. You can check the status with:
 
        # rpm-ostree status
