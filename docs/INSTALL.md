@@ -1,13 +1,41 @@
 # Installation
 
-> **Warning**: The images published by *ahgencer/ocitree* are **experimental** and should not be used on production
-> systems.
+The images are available on the [GitHub](https://ghcr.io/) container registry
+at [ahgencer/silverblue](https://ghcr.io/ahgencer/silverblue) and [ahgencer/kinoite](https://ghcr.io/ahgencer/kinoite).
+
+There are a few different tags that are available for installation:
+
+- `36`, `37`: The currently supported major versions of Fedora. Also see `<VERSION>.<DATE>` for the release of any
+  particular day.
+- `latest`: Points to the latest stable version of Fedora.
+- `rawhide`: The development branch of Fedora. These images might be unstable!
+- `testing`: The development branch of *ahgencer/ocitree*. Builds off of the latest version of Fedora.
+
+### Preparation
+
+Before getting started, please keep a few things in mind:
+
+1. It is highly recommended to **start from a fresh installation** of Fedora Silverblue or Kinoite. If you're going to
+   be rebasing from an existing system, at least **make sure you have a working backup** beforehand.
+
+2. *ahgencer/ocitree* is **only meant for experimenting** with OSTree and other immutable desktop OS technologies, and
+   is **not intended for production use**. It makes no guaranties about the stability or the security of the images.
+
+3. Before rebasing to the new image, take note of the name of the current deployment with `rpm-ostree status`. If you
+   wish to undo your changes, you can revert back to the original image with:
+
+       $ rpm-ostree rebase <REF>
+
+   Where `REF` is the reference to the deployment (eg. `fedora:fedora/37/x86_64/silverblue`).
+
+   You can also take a step further and pin the current deployment with:
+
+       $ ostree admin pin 0
+
+### Getting started
 
 > **Note**: These instructions are for installing *ahgencer/silverblue*. To install *ahgencer/kinoite* instead, simply
 > replace every occurrence of `silverblue` with `kinoite`.
-
-The images are available on the [GitHub](https://ghcr.io/) container registry
-at [ahgencer/silverblue](https://ghcr.io/ahgencer/silverblue) and [ahgencer/kinoite](https://ghcr.io/ahgencer/kinoite).
 
 1. Download and install Fedora [Silverblue](https://silverblue.fedoraproject.org/download)
    or [Kinoite](https://kinoite.fedoraproject.org/download) from the bootable ISO. You may also need to upgrade to the
@@ -15,19 +43,19 @@ at [ahgencer/silverblue](https://ghcr.io/ahgencer/silverblue) and [ahgencer/kino
 
         $ rpm-ostree upgrade && systemctl reboot
 
-2. Afterwards, you can rebase onto *ahgencer/silverblue* with:
+2. Afterwards, you can rebase onto *ahgencer/silverblue:37* with:
 
        $ rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/ahgencer/silverblue:37
 
-   Alternatively, you can use one of the tags listed [here](../README.md#installation).
+   Alternatively, you can use one of the tags listed [here](#installation).
 
-3. Now, you should be able to reboot into the new image. You can check the status with:
+3. Now, you should be able to reboot into the new image:
+
+       $ systemctl reboot
+
+4. You can confirm that everything went correctly with:
 
        # rpm-ostree status
-
-If you wish to undo your changes, you can revert back to the original image with:
-
-    $ rpm-ostree rebase fedora:fedora/37/x86_64/silverblue
 
 ## Building from source
 

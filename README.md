@@ -67,14 +67,6 @@ aware of the risks involved when testing out the images (especially ones that ar
 Installation instructions, as well as instructions for building the images from source, can be
 found [here](docs/INSTALL.md).
 
-*ahgencer/ocitree* publishes a few different tags that are available for installation:
-
-- `36`, `37`: The currently supported major versions of Fedora. Also see `<VERSION>.<DATE>` for the release of any
-  particular day.
-- `latest`: Points to the latest stable version of Fedora.
-- `rawhide`: The development branch of Fedora. These images might be unstable!
-- `testing`: The development branch of *ahgencer/ocitree*. Builds off of the latest version of Fedora.
-
 ### What's inside the images?
 
 #### Silverblue
@@ -98,9 +90,12 @@ Here's a list of everything you will find inside *ahgencer/kinoite*:
 Found a bug or a missing feature? You can report it over at
 the [issue tracker](https://github.com/ahgencer/ocitree/issues).
 
-Please keep in mind that *ahgencer/ocitree* is **only meant for experimenting** with OSTree and other immutable desktop
-OS technologies, and is not intended for production use. It makes no guaranties about the stability or the security of
-the final system images.
+**Creating your own fork of this repository is highly encouraged!** Part of the reason this new container-based approach
+for creating OSTree images is so exciting is how easy it is. If you can think of anything you would have built or
+configured differently than *ahgencer/ocitree*, feel free to do it yourself!
+
+That's also the rationale behind picking the [Unlicense](https://unlicense.org/) for this project. There are literally
+*zero* licensing conditions to use it. Go ahead and modify it to your heart's content!
 
 ## License
 
