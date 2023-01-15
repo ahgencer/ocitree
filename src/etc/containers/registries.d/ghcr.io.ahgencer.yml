@@ -1,3 +1,0 @@
-docker:
-  ghcr.io/ahgencer:
-    use-sigstore-attachments: true

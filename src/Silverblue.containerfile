@@ -15,9 +15,6 @@ ARG FEDORA_VERSION=37
 # See https://pagure.io/releng/pull-request/11180 for final location of base image
 FROM ghcr.io/cgwalters/fedora-silverblue:$FEDORA_VERSION
 
-# Copy configuration files
-COPY ./etc /etc
-
 # Finish and commit image
 RUN rpm-ostree cleanup -m && \
     ostree container commit
