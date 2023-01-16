@@ -1,0 +1,5 @@
+docker:
+  ghcr.io/ahgencer/silverblue:
+    use-sigstore-attachments: true
+  ghcr.io/ahgencer/kinoite:
+    use-sigstore-attachments: true
