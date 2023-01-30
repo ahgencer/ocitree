@@ -9,7 +9,7 @@ There are a few different tags that are available for installation:
   particular day.
 - `latest`: Points to the latest stable version of Fedora.
 - `rawhide`: The development branch of Fedora. These images might be unstable!
-- `testing`: The development branch of *ahgencer/ocitree*. Builds off of the latest version of Fedora.
+- `testing`: The development branch of *ahgencer/ocitree*. Builds off of the latest stable version of Fedora.
 
 ### Preparation
 
@@ -41,19 +41,15 @@ Before getting started, please keep a few things in mind:
    or [Kinoite](https://kinoite.fedoraproject.org/download) from the bootable ISO. You may also need to upgrade to the
    latest version first:
 
-        $ rpm-ostree upgrade && systemctl reboot
+        $ rpm-ostree upgrade --reboot
 
 2. Afterwards, you can rebase onto *ahgencer/silverblue:37* with:
 
-       $ rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/ahgencer/silverblue:37
+       $ rpm-ostree rebase --reboot ostree-unverified-registry:ghcr.io/ahgencer/silverblue:37
 
    Alternatively, you can use one of the tags listed [here](#installation).
 
-3. Now, you should be able to reboot into the new image:
-
-       $ systemctl reboot
-
-4. You can confirm that everything went correctly with:
+3. You can confirm that everything went correctly with:
 
        # rpm-ostree status
 
@@ -85,4 +81,4 @@ To build *ahgencer/silverblue* from source, first install `podman` (which is pre
 
 5. Afterwards, you can rebase onto your newly-built image with:
 
-       $ rpm-ostree rebase --experimental ostree-unverified-registry:<REGISTRY>
+       $ rpm-ostree rebase --reboot ostree-unverified-registry:<REGISTRY>
