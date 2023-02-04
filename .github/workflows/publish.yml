@@ -1,9 +1,9 @@
 name: Build and publish images
 
 on:
-  push:
+  pull_request:
     branches:
-      "testing"
+      - "main"
   schedule:
     - cron: "0 22 * * *"  # Every day at 22:00 (upstream builds at 19:20)
   workflow_dispatch:
@@ -67,8 +67,10 @@ jobs:
               tags+=("latest")
             fi
 
-          else
-            tags+=("testing")
+          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+
+            tags+=("pr-${{ github.event.number }}")
+
           fi
 
           echo "tags=${tags[*]}" >> $GITHUB_OUTPUT
