@@ -34,7 +34,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        variant: [ silverblue, kinoite ]
+        variant: [ silverblue ]
         version: [ 36, 37, rawhide ]
         include:
           - version: 37
