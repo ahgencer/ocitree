@@ -34,10 +34,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        variant: [ silverblue, kinoite ]
-        version: [ 36, 37, rawhide ]
+        variant: [ silverblue ]
+        version: [ 37, 38, rawhide ]
         include:
-          - version: 37
+          - version: 38
             latest: true
 
     steps:
@@ -95,7 +95,7 @@ jobs:
           registry: ghcr.io/${{ github.repository_owner }}
           username: ${{ github.actor }}
           password: ${{ github.token }}
-        if: github.ref == 'refs/heads/main' || matrix.version == '37'  # We only want the latest version for testing
+        if: github.ref == 'refs/heads/main' || matrix.version == '38'  # We only want the latest version for testing
 
       - name: Install Cosign
         uses: sigstore/cosign-installer@v2
@@ -114,4 +114,4 @@ jobs:
         env:
           COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
-        if: github.ref == 'refs/heads/main' || matrix.version == '37'
+        if: github.ref == 'refs/heads/main' || matrix.version == '38'

@@ -1,8 +1,8 @@
-<h1 align="center">Custom Silverblue / Kinoite Images</h1>
+<h1 align="center">Custom OSTree Images</h1>
 
 <p align="center">
     <a href="https://github.com/ahgencer/ocitree/packages">
-        <img alt="Container Registry" src="https://img.shields.io/badge/Container%20Registry-2%20packages-8250df">
+        <img alt="Container Registry" src="https://img.shields.io/badge/Container%20Registry-1%20package-8250df">
     </a>
     <a href="https://github.com/ahgencer/ocitree">
         <img alt="GitHub Stars" src="https://img.shields.io/github/stars/ahgencer/ocitree?label=GitHub%20Stars">
@@ -22,13 +22,12 @@
     </a>
 </p>
 
-*ahgencer/ocitree provides customized container-native OSTree images based on Fedora Silverblue / Kinoite.*
+*ahgencer/ocitree provides customized container-native OSTree images based on Fedora Silverblue.*
 
 *ahgencer/ocitree* is an experiment in building custom distributions derived
-from [Silverblue](https://silverblue.fedoraproject.org/) and [Kinoite](https://kinoite.fedoraproject.org/) as
-simple [Podman](https://podman.io/) images. The images are automatically rebuilt nightly and pushed onto a container
-registry, which can then be used as an upstream remote for [OSTree](https://ostreedev.github.io/ostree/introduction/).
-It provides the regular Silverblue / Kinoite experience, plus:
+from [Silverblue](https://silverblue.fedoraproject.org/) as simple [Podman](https://podman.io/) images. The images are
+automatically rebuilt nightly and pushed onto a container registry, which can then be used as an upstream remote
+for [OSTree](https://ostreedev.github.io/ostree/introduction/). It provides the regular Silverblue experience, plus:
 
 - Additional layered packages out-of-the-box.
 - Pre-enabled third-party repositories (such as from [Copr](https://copr.fedorainfracloud.org/)
@@ -69,21 +68,11 @@ found [here](docs/INSTALL.md).
 
 ### What's inside the images?
 
-#### Silverblue
-
 Here's a list of everything you will find inside *ahgencer/silverblue*:
 
 |     Component     |                                   Source                                   | Description                                                                        |
 |:-----------------:|:--------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------|
 | Fedora Silverblue | [cgwalters/fedora-silverblue](https://ghcr.io/cgwalters/fedora-silverblue) | The base image. *ahgencer/silverblue* builds on the vanilla Silverblue experience. |
-
-#### Kinoite
-
-Here's a list of everything you will find inside *ahgencer/kinoite*:
-
-|   Component    |                                Source                                | Description                                                                  |
-|:--------------:|:--------------------------------------------------------------------:|:-----------------------------------------------------------------------------|
-| Fedora Kinoite | [cgwalters/fedora-kinoite](https://ghcr.io/cgwalters/fedora-kinoite) | The base image. *ahgencer/kinoite* builds on the vanilla Kinoite experience. |
 
 ## Contributing
 
