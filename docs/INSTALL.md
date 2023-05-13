@@ -5,7 +5,7 @@ at [ahgencer/silverblue](https://ghcr.io/ahgencer/silverblue).
 
 There are a few different tags that are available for installation:
 
-- `36`, `37`: The currently supported major versions of Fedora. Also see `<VERSION>.<DATE>` for the release of any
+- `37`, `38`: The currently supported major versions of Fedora. Also see `<VERSION>.<DATE>` for the release of any
   particular day.
 - `latest`: Points to the latest stable version of Fedora.
 - `rawhide`: The development branch of Fedora. These images might be unstable!
@@ -26,7 +26,7 @@ Before getting started, please keep a few things in mind:
 
        $ rpm-ostree rebase <REF>
 
-   Where `REF` is the reference to the deployment (eg. `fedora:fedora/37/x86_64/silverblue`).
+   Where `REF` is the reference to the deployment (eg. `fedora:fedora/38/x86_64/silverblue`).
 
    You can also take a step further and pin the current deployment with:
 
@@ -39,9 +39,9 @@ Before getting started, please keep a few things in mind:
 
         $ rpm-ostree upgrade --reboot
 
-2. Afterwards, you can rebase onto *ahgencer/silverblue:37* with:
+2. Afterwards, you can rebase onto *ahgencer/silverblue:38* with:
 
-       $ rpm-ostree rebase --reboot ostree-unverified-registry:ghcr.io/ahgencer/silverblue:37
+       $ rpm-ostree rebase --reboot ostree-unverified-registry:ghcr.io/ahgencer/silverblue:38
 
    Alternatively, you can use one of the tags listed [here](#installation).
 

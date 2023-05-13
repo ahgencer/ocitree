@@ -10,7 +10,7 @@
 # If not, please refer to <https://unlicense.org>.
 #
 
-ARG FEDORA_VERSION=37
+ARG FEDORA_VERSION=38
 
 # See https://pagure.io/releng/pull-request/11180 for final location of base image
 FROM ghcr.io/cgwalters/fedora-silverblue:$FEDORA_VERSION
