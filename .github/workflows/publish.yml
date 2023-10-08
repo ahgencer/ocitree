@@ -67,7 +67,7 @@ jobs:
               tags+=("latest")
             fi
 
-          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+          elif [[ "${{ github.event_name }}" == @(pull_request|workflow_dispatch) ]]; then
 
             tags+=("pr-${{ github.event.number }}")
 
@@ -96,3 +96,22 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ github.token }}
         if: github.ref == 'refs/heads/main' || matrix.version == '38'  # We only want the latest version for testing
+
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v2
+
+      - name: Login to container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sign image
+        run: |
+          echo "${{ env.COSIGN_PRIVATE_KEY }}" > cosign.key
+          cosign sign --key cosign.key ghcr.io/${{ github.repository_owner }}/${{ steps.build.outputs.image }}@${{ steps.push.outputs.digest }}
+        env:
+          COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+          COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+        if: github.ref == 'refs/heads/main' || matrix.version == '38'
