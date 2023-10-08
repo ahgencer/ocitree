@@ -67,7 +67,7 @@ jobs:
               tags+=("latest")
             fi
 
-          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+          elif [[ "${{ github.event_name }}" == @(pull_request|workflow_dispatch) ]]; then
 
             tags+=("pr-${{ github.event.number }}")
 
