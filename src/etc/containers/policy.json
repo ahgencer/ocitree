@@ -29,15 +29,6 @@
                     }
                 }
             ],
-            "ghcr.io/ahgencer/kinoite": [
-                {
-                    "type": "sigstoreSigned",
-                    "keyPath": "/etc/pki/containers/ocitree.pub",
-                    "signedIdentity": {
-                        "type": "matchRepository"
-                    }
-                }
-            ],
             "": [
                 {
                     "type": "insecureAcceptAnything"
